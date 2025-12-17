@@ -1,0 +1,308 @@
+<!DOCTYPE<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eryl | Personal Website</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* BACKGROUND (BAGO LANG ITO) */
+body{
+    background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    color:#f1f5f9;
+    line-height:1.6;
+}
+
+/* NAVIGATION */
+nav{
+    background:rgba(30,58,138,0.95);
+    padding:15px 0;
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+}
+
+nav ul li a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav ul li a:hover{
+    color:#fde68a;
+}
+
+/* SECTIONS */
+section{
+    max-width:900px;
+    margin:100px auto 40px;
+    padding:30px;
+    background:rgba(255,255,255,0.92);
+    color:#333;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+h1, h2, h3{
+    color:#1e3a8a;
+    margin-bottom:15px;
+}
+
+p{
+    margin-bottom:15px;
+    text-align:justify;
+}
+
+/* HOME PROFILE */
+.home-profile{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.home-profile img{
+    width:160px;
+    height:160px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid #1e3a8a;
+    margin-bottom:15px;
+}
+
+/* IMAGE GRID */
+.image-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin:20px 0;
+}
+
+.image-grid img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+/* PROJECTS */
+.projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:20px;
+    margin-top:20px;
+}
+
+.project-card{
+    background:#f1f5f9;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 5px 10px rgba(0,0,0,0.15);
+}
+
+.project-card h3{
+    margin-bottom:10px;
+}
+
+.project-card p{
+    text-align:center;
+    font-size:14px;
+}
+
+.project-card a{
+    display:inline-block;
+    margin-top:10px;
+    padding:8px 15px;
+    background:#1e3a8a;
+    color:#fff;
+    text-decoration:none;
+    border-radius:6px;
+    font-size:14px;
+}
+
+.project-card a:hover{
+    background:#0f2a63;
+}
+
+/* CONTACT */
+.contact-info p{
+    margin-bottom:10px;
+}
+
+.contact-info a{
+    color:#1e3a8a;
+    text-decoration:none;
+}
+
+.contact-info a:hover{
+    text-decoration:underline;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:15px;
+    background:rgba(30,58,138,0.95);
+    color:#fff;
+    margin-top:40px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .image-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:500px){
+    .image-grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+    <div class="home-profile">
+        <img src="profile.jpg" alt="Eryl Profile Picture">
+        <h1>Welcome to my website!</h1>
+    </div>
+
+    <p>
+        This site is created to introduce myself and showcase the projects and activities I have worked on.
+        Here, you will learn more about who I am, my skills, and the things I enjoy doing.
+    </p>
+    <p>
+        This website also serves as a portfolio of my work, including school projects and personal creations.
+        I hope this site gives you a clear idea of my interests, creativity, and dedication to learning.
+    </p>
+</section>
+
+<!-- ABOUT ME -->
+<section id="about">
+    <h2>About Me</h2>
+    <p>
+        Hello! Welcome to my website. My name is <strong>Eryl</strong>, and I am a student who is passionate
+        about learning and improving my skills, especially in technology and creativity.
+    </p>
+
+    <h3>My Boyfriend</h3>
+    <div class="image-grid">
+        <img src="b1.jpeg">
+        <img src="b3.jpeg">
+        <img src="b2.jpeg">
+        <img src="b4.jpeg">
+    </div>
+    <p>
+        My boyfriend is a kind, loving, and supportive person who plays an important role in my life.
+        He motivates me to become a better version of myself and always knows how to make me smile,
+        even on difficult days. His patience, understanding, and genuine care make our relationship strong,
+        and I am grateful to have someone who brings happiness, comfort, and love into my life every day.
+    </p>
+
+    <h3>Friends</h3>
+    <div class="image-grid">
+        <img src="f1.jpeg">
+        <img src="f2.jpeg">
+        <img src="f3.jpeg">
+        <img src="f4.jpeg">
+    </div>
+    <p>
+        My friends are an important part of my life, always bringing joy, support, and positivity.
+        They stand by me during both happy and challenging moments, offering encouragement, laughter,
+        and understanding. With them, I feel accepted and valued, and their friendship makes my journey
+        more meaningful and memorable every day.
+    </p>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <h2>Projects</h2>
+
+    <div class="projects-grid">
+        <div class="project-card">
+            <h3>Project 1</h3>
+            <p>Stry in the Book</p>
+            <a href="p1.html">View Project</a>
+        </div>
+
+        <div class="project-card">
+            <h3>Project 2</h3>
+            <p>Recipe</p>
+            <a href="p2.html">View Project</a>
+        </div>
+
+        <div class="project-card">
+            <h3>Project 3</h3>
+            <p>Order Form</p>
+            <a href="p3.html">View Project</a>
+        </div>
+
+        <div class="project-card">
+            <h3>Project 4</h3>
+            <p>ORDER FORM W RECIEPT</p>
+            <a href="p4.html">View Project</a>
+        </div>
+
+        <div class="project-card">
+            <h3>Project 5</h3>
+            <p>Bicycle</p>
+            <a href="p5.html">View Project</a>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-info">
+        <p><strong>Contact Number:</strong> 0930-098-6162</p>
+        <p><strong>Email:</strong>
+            <a href="eryl8836@gmail.com">eryl8836@gmail.com</a>
+        </p>
+        <p><strong>Facebook:</strong>
+            <a href="https://www.facebook.com/eryl.tandoy" target="_blank">
+                facebook.com/eryl.tandoy
+            </a>
+        </p>
+    </div>
+</section>
+
+<footer>
+    © 2025 Eryl | Personal Website
+</footer>
+
+</body>
+</html>

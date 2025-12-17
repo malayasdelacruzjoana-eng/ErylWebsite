@@ -1,0 +1,200 @@
+
+
+<html>
+<head>
+    <title>Eryl's Tea Order Form</title>
+    <style>
+        body {
+            background-image: url('bg3.jpeg');
+            background-size: cover;
+            font-family: Arial;
+        }
+        .box {
+            background: #ffffffc7;
+            padding: 20px;
+            width: 500px;
+            margin: 20px;
+            border-radius: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <h1>Eryl's Tea Order Form</h1>
+
+    <!-- Personal Info -->
+    <label>First Name:</label><br>
+    <input type="text" id="fname"><br>
+
+    <label>Last Name:</label><br>
+    <input type="text" id="lname"><br>
+
+    <label>Email:</label><br>
+    <input type="email" id="email"><br>
+
+    <label>Contact Number:</label><br>
+    <input type="text" id="contact"><br>
+
+    <label>Preferred Delivery Date:</label><br>
+    <input type="date" id="date"><br><br>
+
+    <!-- Size -->
+    <label>Size:</label><br>
+    <input type="radio" name="size" value="30"> Small (₱30)<br>
+    <input type="radio" name="size" value="40"> Medium (₱40)<br>
+    <input type="radio" name="size" value="50"> Large (₱50)<br><br>
+
+    <!-- Flavors -->
+    <label>Flavor:</label><br>
+    <input type="checkbox" class="flavor" value="0"> Okinawa<br>
+    <input type="checkbox" class="flavor" value="0"> Chocolate<br>
+    <input type="checkbox" class="flavor" value="0"> Cookies & Cream<br>
+    <input type="checkbox" class="flavor" value="0"> Taro<br>
+    <input type="checkbox" class="flavor" value="0"> Rocky Road<br>
+    <input type="checkbox" class="flavor" value="0"> Mocha<br>
+    <input type="checkbox" class="flavor" value="0"> Red Velvet<br>
+    <input type="checkbox" class="flavor" value="0"> Winter Melon<br><br>
+
+    <!-- Add-ons -->
+    <label>Add-ons (₱10 each):</label><br>
+    <input type="checkbox" class="addon" value="10"> Pearl<br>
+    <input type="checkbox" class="addon" value="10"> Sprinkles<br>
+    <input type="checkbox" class="addon" value="10"> Oreo<br>
+    <input type="checkbox" class="addon" value="10"> Jelly<br><br>
+
+    <!-- Payment Method -->
+    <label>Payment Method:</label><br>
+    <input type="radio" name="payment"> Cash 
+    <input type="radio" name="payment"> Gcash 
+    <input type="radio" name="payment"> Credit Card<br><br>
+
+    <!-- Amount Paid -->
+    <label>Amount Paid:</label><br>
+    <input type="number" id="amountPaid" min="0" value="0"><br><br>
+
+    <label>Additional Notes:</label><br>
+    <textarea cols="50" rows="5" id="notes">Enter your comments...</textarea><br><br>
+
+    <!-- Total -->
+    <button onclick="calculateTotal()">Calculate Total</button>
+    <!-- Submit Button -->
+    <button onclick="submitOrder()">Submit Order</button>
+
+    <h2>Total Price: ₱<span id="total">0</span></h2>
+    <h2>Change: ₱<span id="change">0</span></h2>
+</div>
+
+
+<!-- RECEIPT BOX -->
+<div class="box" id="receipt" style="display:none;">
+    <h2>Order Receipt</h2>
+
+    <p><strong>Name:</strong> <span id="r_name"></span></p>
+    <p><strong>Email:</strong> <span id="r_email"></span></p>
+    <p><strong>Contact:</strong> <span id="r_contact"></span></p>
+    <p><strong>Delivery Date:</strong> <span id="r_date"></span></p>
+
+    <p><strong>Size:</strong> <span id="r_size"></span></p>
+    <p><strong>Flavor(s):</strong> <span id="r_flavor"></span></p>
+    <p><strong>Add-ons:</strong> <span id="r_addons"></span></p>
+
+    <p><strong>Notes:</strong> <span id="r_notes"></span></p>
+
+    <h3><strong>Total Price:</strong> ₱<span id="r_total"></span></h3>
+    <h3><strong>Amount Paid:</strong> ₱<span id="r_paid"></span></h3>
+    <h3><strong>Change:</strong> ₱<span id="r_change"></span></h3>
+</div>
+
+
+<script>
+function calculateTotal() {
+    let total = 0;
+
+    // Size
+    let size = document.querySelector('input[name="size"]:checked');
+    let sizeText = "";
+    if (size) {
+        total += parseInt(size.value);
+        sizeText = size.nextSibling.textContent.trim();
+    }
+
+    // Add-ons
+    let addons = document.querySelectorAll('.addon:checked');
+    let addonList = [];
+    addons.forEach(a => {
+        total += parseInt(a.value);
+        addonList.push(a.nextSibling.textContent.trim());
+    });
+
+    // Flavors
+    let flavors = document.querySelectorAll('.flavor:checked');
+    let flavorList = [];
+    flavors.forEach(f => {
+        flavorList.push(f.nextSibling.textContent.trim());
+    });
+
+    // Amount Paid
+    let amountPaid = parseFloat(document.getElementById("amountPaid").value) || 0;
+
+    // Change
+    let change = amountPaid - total;
+    if (change < 0) change = 0;
+
+    // Update total + change on page
+    document.getElementById("total").innerText = total;
+    document.getElementById("change").innerText = change;
+
+    // Fill receipt
+    document.getElementById("r_name").innerText =
+        document.getElementById("fname").value + " " + document.getElementById("lname").value;
+
+    document.getElementById("r_email").innerText = document.getElementById("email").value;
+    document.getElementById("r_contact").innerText = document.getElementById("contact").value;
+    document.getElementById("r_date").innerText = document.getElementById("date").value;
+
+    document.getElementById("r_size").innerText = sizeText || "None";
+    document.getElementById("r_flavor").innerText = flavorList.join(", ") || "None";
+    document.getElementById("r_addons").innerText = addonList.join(", ") || "None";
+
+    document.getElementById("r_notes").innerText = document.getElementById("notes").value;
+
+    document.getElementById("r_total").innerText = total;
+    document.getElementById("r_paid").innerText = amountPaid;
+    document.getElementById("r_change").innerText = change;
+
+    // Show receipt
+    document.getElementById("receipt").style.display = "block";
+}
+
+// Submit order function
+function submitOrder() {
+    // Ensure total is calculated first
+    calculateTotal();
+
+    // Show a confirmation alert
+    alert("Thank you! Your order has been submitted.");
+
+    // Reset the form fields
+    document.getElementById("fname").value = "";
+    document.getElementById("lname").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("contact").value = "";
+    document.getElementById("date").value = "";
+    document.querySelectorAll('input[name="size"]').forEach(el => el.checked = false);
+    document.querySelectorAll('.flavor').forEach(el => el.checked = false);
+    document.querySelectorAll('.addon').forEach(el => el.checked = false);
+    document.querySelectorAll('input[name="payment"]').forEach(el => el.checked = false);
+    document.getElementById("amountPaid").value = 0;
+    document.getElementById("notes").value = "Enter your comments...";
+    document.getElementById("total").innerText = 0;
+    document.getElementById("change").innerText = 0;
+    document.getElementById("receipt").style.display = "none";
+}
+</script>
+
+</body>
+</html>
